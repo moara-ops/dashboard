@@ -1,0 +1,28 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Use Node.js 16.18.1
+      uses: actions/setup-node@v2
+      with:
+        node-version: 16.18.1
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Build and deploy
+      run: |
+        npm install
+        npm run build
+        mv dist docs
+        echo "moara-ops.github.io" > docs/CNAME
+        git add docs
+        git commit -m "Deploy to GitHub Pages"
+        git push --force "https://${{ secrets.GITHUB_TOKEN }}@github.com/moara-ops/dashboard.git" master:gh-pages
