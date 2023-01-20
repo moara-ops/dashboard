@@ -3,6 +3,11 @@ process.env.VUE_APP_VERSION = require('./package.json').version
 
 module.exports = {
     // publicPath: '/dashboard/',
+    pwa: {
+      workboxOptions: {
+        exclude: [/_redirects/]
+      }
+    },
     // assetsDir: './dashboard/',
     transpileDependencies: [
         'vuetify'
