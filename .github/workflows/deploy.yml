@@ -26,3 +26,6 @@ jobs:
         git add docs
         git commit -m "Deploy to GitHub Pages"
         git push --force "https://${{ secrets.GITHUB_TOKEN }}@github.com/moara-ops/dashboard.git" master:gh-pages
+    - run: git config --global user.email "Allianikulaporaheem@gmail.com"
+    - run: git config --global user.name "Alli AnikulapoRaheem"
+
